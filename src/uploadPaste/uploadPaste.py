@@ -3,6 +3,7 @@
 from auth import authenticate
 from PIL import ImageGrab
 import tkinter as tk
+from imgurpython import ImgurClient
 
 from datetime import datetime
 
@@ -16,7 +17,7 @@ def uploadPaste(client, img):
 	return image
 
 if __name__ == "__main__":
-	client = authenticate()
+	client = ImgurClient("2595bbb929fab88", "fb4fd695ff057b6aa95768c08a5f9f8545b5c711")
 	screen = tk.Tk()
 	screen_width = screen.winfo_screenwidth()
 	screen_height = screen.winfo_screenheight()
