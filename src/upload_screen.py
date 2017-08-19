@@ -24,11 +24,10 @@ def upload():
 	screen_height = screen.winfo_screenheight()
 	img = ImageGrab.grab((0, 0, screen_width, screen_height))
 
-	tf = tempfile.NamedTemporaryFile(mode='w', delete=False)
-	tf_name = tf.name
-	img.save(tf, 'JPEG')
+	with tempfile.NamedTemporaryFile(mode='w', delete=False) as tf:
+		img.save(tf, 'JPEG')
+		tf.close()
+		image = upload_to_imgur(client, tf.name)
 
-	image = upload_to_imgur(client, tf_name)
-
-	print("Image was posted! Go check your images you sexy beast!")
-	print("You can find it here: {0}".format(image['link']))
+		print("Image was posted! Go check your images you sexy beast!")
+		print("You can find it here: {0}".format(image['link']))
