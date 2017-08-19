@@ -11,7 +11,7 @@ FILENAME = "temp.jpg"
 def upload_to_imgur(client, img):
 
 	print("Uploading image... ")
-	image = client.upload_from_path(img, config=None, anon=False)
+	image = client.upload(open(img, 'rb'), config=None, anon=False)
 	print("Done")
 	print()
 
