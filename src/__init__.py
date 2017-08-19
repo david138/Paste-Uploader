@@ -1,1 +1,1 @@
-from .uploadPaste import uploadPaste
+from .uploadPaste import upload_screen
