@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 from PIL import ImageGrab
-import tkinter as tk
 from libraries.imgurpython.client import ImgurClient
+
+import tkinter as tk
+import tempfile
 
 FILENAME = "temp.jpg"
 
@@ -10,7 +12,6 @@ def upload_to_imgur(client, img):
 
 	print("Uploading image... ")
 	image = client.upload_from_path(img, config=None, anon=False)
-	print(image)
 	print("Done")
 	print()
 
@@ -22,8 +23,12 @@ def upload():
 	screen_width = screen.winfo_screenwidth()
 	screen_height = screen.winfo_screenheight()
 	img = ImageGrab.grab((0, 0, screen_width, screen_height))
-	img.save(FILENAME)
-	image = upload_to_imgur(client, FILENAME)
+
+	tf = tempfile.NamedTemporaryFile(mode='w', delete=False)
+	tf_name = tf.name
+	img.save(tf, 'JPEG')
+
+	image = upload_to_imgur(client, tf_name)
 
 	print("Image was posted! Go check your images you sexy beast!")
 	print("You can find it here: {0}".format(image['link']))
