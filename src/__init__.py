@@ -1,0 +1,1 @@
+from .uploadPaste import uploadPaste
