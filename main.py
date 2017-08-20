@@ -1,4 +1,4 @@
-from src.upload_screen import upload
+from src.snip_screen import snip_screen
 
 if __name__ == "__main__":
-    upload()
+    snip_screen()
