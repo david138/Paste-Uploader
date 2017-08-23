@@ -106,6 +106,10 @@ class SnipScreen(QWidget):
         self.upload_info = UploadInfo(link)
         self.upload_info.show()
 
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Escape:
+            self.close()
+
 
 def snip_screen():
     app = QApplication(sys.argv)
