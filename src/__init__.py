@@ -1,1 +1,1 @@
-from .upload_screen import upload
+from .snip_screen import snip_screen
