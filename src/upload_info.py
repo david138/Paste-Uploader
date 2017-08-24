@@ -36,7 +36,9 @@ class UploadInfo(QWidget):
     def create_copy(self):
         copy_button = QPushButton('', self)
         copy_button.resize(50, 50)
-        copy_button.move(235, 75)
+        copy_button.move(235, 70)
+        copy_button.setIcon(QIcon('res/copy_icon.jpg'))
+        copy_button.setIconSize(QSize(44,44))
         copy_button.clicked.connect(self.on_click)
 
     def on_click(self, link):

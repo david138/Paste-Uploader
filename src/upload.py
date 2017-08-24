@@ -13,8 +13,8 @@ def upload(snip):
         snip.save(tf, 'JPEG')
         tf_name = tf.name
 
-        with open(tf_name, 'rb') as img_file:
-            snip_info = client.upload(img_file, config=None, anon=False)
+    with open(tf_name, 'rb') as img_file:
+        snip_info = client.upload(img_file, config=None, anon=False)
 
-        print(format(snip_info['link']))
-        return snip_info['link']
+    print(format(snip_info['link']))
+    return snip_info['link']
