@@ -91,19 +91,19 @@ class MainMenu(QWidget):
         self.update()
 
     def upload_btn_click(self):
-        link = self.get_link()
-        self.loading_label.hide()
-        self.show_link_info(link)
+        self.link = self.get_link()
+        self.show_link_info()
 
     def get_link(self):
         self.upload_btn.hide()
         self.loading_label.show()
         QApplication.processEvents()
         link = upload(self.snip)
+        self.loading_label.hide()
         return link
 
-    def show_link_info(self, link):
-        self.link_label.setText('<a href="' + link + '">Snip Uploaded</a>')
+    def show_link_info(self):
+        self.link_label.setText('<a href="' + self.link + '">Snip Uploaded</a>')
         self.link_label.show()
         self.copy_btn.show()
 
