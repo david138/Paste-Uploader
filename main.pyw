@@ -1,4 +1,4 @@
-from src.snip_screen import snip_screen
+from src.snip_app import start_app_loop
 
 if __name__ == "__main__":
-    snip_screen()
+    start_app_loop()

@@ -1,7 +1,6 @@
 import sys
 import tkinter as tk
 from PIL import ImageGrab
-from .upload import upload
 from .upload_info import UploadInfo
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QFont, QPainter, QColor, QBrush
@@ -9,8 +8,9 @@ from PyQt5.QtCore import Qt, QRect, QPoint
 
 class SnipScreen(QWidget):
     
-    def __init__(self):
+    def __init__(self, main_menu):
         super().__init__()
+        self.main_menu = main_menu
         self.initUI()     
         
     def initUI(self):
@@ -28,7 +28,7 @@ class SnipScreen(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
 
         self.setCursor(Qt.CrossCursor)
-        self.show()
+        #self.show()
 
     def paintEvent(self, event):
         qp = QPainter()
@@ -99,17 +99,17 @@ class SnipScreen(QWidget):
 
     def mouseReleaseEvent(self, event):
         self.close()
-        self.upload_image()
+        snip = ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y))
+        self.main_menu.load_snip_info(snip)
 
-    def upload_image(self):
-        link = upload(ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y)))
-        self.upload_info = UploadInfo(link)
-        self.upload_info.show()
+    # def upload_image(self):
+    #     link = upload(ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y)))
+    #     self.upload_info = UploadInfo(link)
+    #     self.upload_info.show()
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
             self.close()
-
 
 def snip_screen():
     app = QApplication(sys.argv)

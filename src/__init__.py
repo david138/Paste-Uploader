@@ -1,1 +1,1 @@
-from .snip_screen import snip_screen
+from .snip_app import start_app_loop
