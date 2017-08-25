@@ -25,9 +25,7 @@ class SnipScreen(QWidget):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_NoSystemBackground, True)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-
         self.setCursor(Qt.CrossCursor)
-        #self.show()
 
     def paintEvent(self, event):
         qp = QPainter()
@@ -100,11 +98,6 @@ class SnipScreen(QWidget):
         self.close()
         snip = ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y))
         self.main_menu.load_snip_info(snip)
-
-    # def upload_image(self):
-    #     link = upload(ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y)))
-    #     self.upload_info = UploadInfo(link)
-    #     self.upload_info.show()
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:

@@ -7,3 +7,4 @@ def start_app_loop():
     main_menu = MainMenu()
     main_menu.show()
     sys.exit(app.exec_())
+    

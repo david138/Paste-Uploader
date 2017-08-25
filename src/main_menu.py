@@ -1,4 +1,5 @@
 import sys
+import time
 import tkinter as tk
 from .upload import upload
 from .snip_screen import SnipScreen
@@ -49,7 +50,7 @@ class MainMenu(QWidget):
         loading_label = QLabel(self)
         loading_label.setText('Uploading...')
         loading_label.resize(300, 75)
-        loading_label.move(50,350)
+        loading_label.move(140,350)
         loading_label.hide()
         self.loading_label = loading_label
 
@@ -90,12 +91,19 @@ class MainMenu(QWidget):
         self.update()
 
     def upload_btn_click(self):
+        link = self.get_link()
+        self.loading_label.hide()
+        self.show_link_info(link)
+
+    def get_link(self):
         self.upload_btn.hide()
         self.loading_label.show()
-        self.link = upload(self.snip)
-        self.loading_label.hide()
+        QApplication.processEvents()
+        link = upload(self.snip)
+        return link
 
-        self.link_label.setText('<a href="' + self.link + '">Snip Uploaded</a>')
+    def show_link_info(self, link):
+        self.link_label.setText('<a href="' + link + '">Snip Uploaded</a>')
         self.link_label.show()
         self.copy_btn.show()
 
@@ -107,4 +115,3 @@ class MainMenu(QWidget):
 def snip_menu(snip):
     snip_menu = MainMenu()
     snip_menu.add_snip_info(snip)
-

@@ -18,3 +18,4 @@ def upload(snip):
 
     print(format(snip_info['link']))
     return snip_info['link']
+    
