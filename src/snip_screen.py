@@ -1,7 +1,6 @@
 import sys
 import tkinter as tk
 from PIL import ImageGrab
-from .upload_info import UploadInfo
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QFont, QPainter, QColor, QBrush
 from PyQt5.QtCore import Qt, QRect, QPoint
