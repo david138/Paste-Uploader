@@ -1,5 +1,5 @@
 # Paste-Uploader
-![Alt Text](http://imgur.com/rSPdi4p)  
+![Alt Text](http://imgur.com/rSPdi4p.gif)  
 
 
 pip install Pillow  
