@@ -97,7 +97,7 @@ class SnipScreen(QWidget):
     def mouseReleaseEvent(self, event):
         self.close()
         snip = ImageGrab.grab((self.x, self.y, self.x + self.offset_x, self.y + self.offset_y))
-        self.main_menu.load_snip_info(snip)
+        self.main_menu.load_snip_info(snip, self.offset_x, self.offset_y / self.offset_x)
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:

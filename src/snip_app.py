@@ -5,6 +5,6 @@ from PyQt5.QtWidgets import QWidget, QApplication
 def start_app_loop():
     app = QApplication(sys.argv)
     main_menu = MainMenu()
+    main_menu.set_window_size(150)
     main_menu.show()
     sys.exit(app.exec_())
-    
